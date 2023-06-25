@@ -40,6 +40,14 @@ function clickCell(){
         re_start()
         return
     }
+
+    if(pareggio()){
+        endGame = true
+        alert('Pareggio!!')
+        re_start()
+        return
+    }
+    player1 = player1 === 'X' ? 'O' : 'X'
 }
 function win(p){
     var combinazioni = 
@@ -63,3 +71,11 @@ function win(p){
       }
     return false
 }
+ function pareggio(){
+    for (let i = 0; i < celle.length; i++) {
+        if (celle[i].textContent === '') {
+          return false;
+        }
+      }
+      return true;
+ }
