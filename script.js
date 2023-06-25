@@ -33,7 +33,7 @@ function clickCell(){
         return
     this.textContent = player1
     this.style.color = player1 === 'X' ? 'red' : 'blue'
-
+    
     if(win(player1)){
         endGame = true
         alert(`Il giocatore ${player1} ha vinto!`)
