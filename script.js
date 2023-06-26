@@ -4,7 +4,7 @@ const celle = []
 let player1 = 'X'
 
 let endGame = false
-
+ 
 function start(){
     let i=0
     for(; i<9; ++i){
@@ -23,7 +23,7 @@ function re_start(){
         cell.textContent = '';
         cell.style.color = 'black';
       });
-      currentPlayer = 'X';
+      player1 = 'X';
       gameOver = false;
 }
 function clickCell(){
@@ -35,19 +35,32 @@ function clickCell(){
     this.style.color = player1 === 'X' ? 'red' : 'blue'
     
     if(win(player1)){
-        endGame = true
-        alert(`Il giocatore ${player1} ha vinto!`)
-        re_start()
-        return
+        this.textContent = player1
+        setTimeout(()=>{
+            endGame = true
+            let a = ""
+            a = player1 === 'O' ? 'X' : 'O'
+
+            var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+            document.getElementById('winner').textContent = a + " vince la partita"
+            myModal.show(); 
+            re_start()
+            return
+        }, 500)
+        
     }
 
     if(pareggio()){
         endGame = true
-        alert('Pareggio!!')
+        var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+            document.getElementById('winner').textContent = "Pareggio"
+            myModal.show();
         re_start()
         return
     }
     player1 = player1 === 'X' ? 'O' : 'X'
+
+
 }
 function win(p){
     var combinazioni = 
